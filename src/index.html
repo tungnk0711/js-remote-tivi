@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let Remote = function () {
+        this.chanel = 0;
+        this.volume = 0;
+
+        this.switchChanel = function (chanel) {
+            this.chanel = chanel;
+            alert('Da thay doi kenh');
+        }
+
+        this.switchVolume = function (volume) {
+            this.volume = volume;
+            alert('Da thay doi am luong');
+        }
+    }
+
+    let Tivi = function (chanel, volume) {
+        this.chanel = chanel;
+        this.volume = volume;
+        this.remote = null;
+
+        this.connectRemote = function (remote) {
+            this.remote = remote;
+            this.chanel = this.remote.chanel;
+            this.volume = this.remote.volume;
+        }
+
+        this.showChanel = function () {
+            return this.chanel;
+        }
+
+        this.showVolume = function () {
+            return this.volume;
+        }
+    }
+
+    let tivi = new Tivi(7, 3);
+    alert('Chanell: ' + tivi.showChanel());
+    alert('Volume: ' + tivi.showVolume());
+
+    let remote = new Remote();
+
+    remote.switchChanel(8);
+    remote.switchVolume(4);
+
+    tivi.connectRemote(remote);
+    alert('Chanell: ' + tivi.showChanel());
+    alert('Volume: ' + tivi.showVolume());
+
+
+
+</script>
+</body>
+</html>
